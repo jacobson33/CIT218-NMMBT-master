@@ -5,6 +5,8 @@
 }
 
 <h2>View</h2>
+<h4>@ViewBag.SearchCriteria</h4>
+<h4>@ViewBag.CountyFilter</h4>
 
 @using (Html.BeginForm())
 {
@@ -30,10 +32,12 @@
 <table class="table">
     <tr>
         <th>
-            @Html.ActionLink(@Html.DisplayNameFor(model => model.Name).ToString(), "Index", new { sortOrder = "Name" })
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.Name).ToString(), "Index", new { sortOrder = ViewBag.NameSort })
+            <span class="glyphicon @ViewBag.NameSortArrow"></span>
         </th>
         <th>
-            @Html.ActionLink(@Html.DisplayNameFor(model => model.County).ToString(), "Index", new {sortOrder = "County"})
+            @Html.ActionLink(@Html.DisplayNameFor(model => model.County).ToString(), "Index", new { sortOrder = ViewBag.CountySort })
+            <span class="glyphicon @ViewBag.CountySortArrow"></span>
         </th>
         <th>
             Information

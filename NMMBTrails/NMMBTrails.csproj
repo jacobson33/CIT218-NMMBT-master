@@ -232,7 +232,9 @@
     <Compile Include="Controllers\TrailController.cs" />
     <Compile Include="DAL\DataConfig.cs" />
     <Compile Include="DAL\InitializeSeedData.cs" />
+    <Compile Include="DAL\ITrailDataService.cs" />
     <Compile Include="DAL\ITrailRepository.cs" />
+    <Compile Include="DAL\JSONDataService.cs" />
     <Compile Include="DAL\TrailRepository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

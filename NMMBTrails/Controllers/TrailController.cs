@@ -24,19 +24,41 @@ namespace NMMBTrails.Controllers
                 trails = trailRepository.SelectAll() as IList<Trail>;
             }
 
+            //sorting setup
+            ViewBag.NameSort = sortOrder == "Name" ? "Name_desc" : "Name";
+            ViewBag.CountySort = sortOrder == "County" ? "County_desc" : "County";
+
             //sorting
             switch (sortOrder)
             {
                 case "Name":
                     trails = trails.OrderBy(t => t.Name);
+                    ViewBag.NameSortArrow = "glyphicon-chevron-up";
+                    ViewBag.CountySortArrow = null;
+                    break;
+
+                case "Name_desc":
+                    trails = trails.OrderByDescending(t => t.Name);
+                    ViewBag.NameSortArrow = "glyphicon-chevron-down";
+                    ViewBag.CountySortArrow = null;
                     break;
 
                 case "County":
                     trails = trails.OrderBy(t => t.County);
+                    ViewBag.CountySortArrow = "glyphicon-chevron-up";
+                    ViewBag.NameSortArrow = null;
+                    break;
+
+                case "County_desc":
+                    trails = trails.OrderByDescending(t => t.County);
+                    ViewBag.CountySortArrow = "glyphicon-chevron-down";
+                    ViewBag.NameSortArrow = null;
                     break;
 
                 default:
                     trails = trails.OrderBy(t => t.Id);
+                    ViewBag.NameSortArrow = null;
+                    ViewBag.CountySortArrow = null;
                     break;
             }
 
@@ -58,11 +80,17 @@ namespace NMMBTrails.Controllers
             }
 
             //filter
-            if (searchCriteria != null)
+            if (!String.IsNullOrEmpty(searchCriteria))
+            {
                 trails = trails.Where(t => t.Name.ToUpper().Contains(searchCriteria.ToUpper()));
+                ViewBag.SearchCriteria = searchCriteria;
+            }
 
-            if (countyFilter != "" || countyFilter != null)
+            if (!String.IsNullOrEmpty(countyFilter))
+            {
                 trails = trails.Where(t => t.County == countyFilter);
+                ViewBag.CountyFilter = countyFilter;
+            }
 
             return View(trails);
         }
@@ -156,5 +184,7 @@ namespace NMMBTrails.Controllers
                 return View();
             }
         }
+
+
     }
 }

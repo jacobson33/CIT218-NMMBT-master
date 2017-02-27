@@ -17,6 +17,7 @@ namespace NMMBTrails.DAL
 
         public IEnumerable<Trail> SelectAll()
         {
+            Save();
             return _trails;
         }
 
@@ -53,7 +54,8 @@ namespace NMMBTrails.DAL
 
         public void Save()
         {
-
+            JSONDataService js = new JSONDataService();
+            js.Write(_trails);
         }
 
         public void Dispose()
