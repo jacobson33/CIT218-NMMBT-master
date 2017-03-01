@@ -37,7 +37,7 @@ namespace NMMBTrails.DAL
         public void Write(List<Trail> trails)
         {
             // initialize a FileStream object for reading
-            string xmlFilePath = HttpContext.Current.Application["xmlPath"].ToString();
+            string xmlFilePath = HttpContext.Current.Application["dataFilePath"].ToString();
             StreamWriter sWriter = new StreamWriter(xmlFilePath, false);
 
             XmlSerializer serializer = new XmlSerializer(typeof(List<Trail>), new XmlRootAttribute("Trails"));
