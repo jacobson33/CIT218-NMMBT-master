@@ -10,6 +10,6 @@ namespace NMMBTrails.Models
     public class Trails
     {
         [XmlElement("Trail")]
-        public IEnumerable<Trail> trails;
+        public List<Trail> trails;
     }
 }

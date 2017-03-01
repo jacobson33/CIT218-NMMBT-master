@@ -8,11 +8,11 @@ namespace NMMBTrails.DAL
 {
     public class TrailRepository : ITrailRepository, IDisposable
     {
-        private IList<Trail> _trails;
+        private List<Trail> _trails;
 
         public TrailRepository()
         {
-            _trails = HttpContext.Current.Session["Trails"] as IList<Trail>;
+            _trails = HttpContext.Current.Session["Trails"] as List<Trail>;
         }
 
         public IEnumerable<Trail> SelectAll()
@@ -29,6 +29,7 @@ namespace NMMBTrails.DAL
 
         public void Insert (Trail trail)
         {
+            Save();
             _trails.Add(trail);
         }
 
@@ -41,6 +42,8 @@ namespace NMMBTrails.DAL
                 _trails.Remove(oldTrail);
                 _trails.Add(updatedTrail);
             }
+
+            Save();
         }
 
         public void Delete(int id)
@@ -50,12 +53,15 @@ namespace NMMBTrails.DAL
             {
                 _trails.Remove(trail);
             }
+
+            Save();
         }
 
         public void Save()
         {
-            JSONDataService js = new JSONDataService();
-            js.Write(_trails);
+            //JSONDataService js = new JSONDataService();
+            XMLDataService xml = new XMLDataService();
+            xml.Write(_trails);
         }
 
         public void Dispose()

@@ -236,6 +236,7 @@
     <Compile Include="DAL\ITrailRepository.cs" />
     <Compile Include="DAL\JSONDataService.cs" />
     <Compile Include="DAL\TrailRepository.cs" />
+    <Compile Include="DAL\XMLDataService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -307,6 +308,11 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trail\Index.cshtml" />
+    <Content Include="Views\Trail\Create.cshtml" />
+    <Content Include="Views\Trail\Delete.cshtml" />
+    <Content Include="Views\Trail\Details1.cshtml" />
+    <Content Include="Views\Trail\Edit.cshtml" />
+    <Content Include="Views\Trail\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

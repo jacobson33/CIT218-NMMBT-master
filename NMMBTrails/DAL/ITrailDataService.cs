@@ -9,7 +9,7 @@ namespace NMMBTrails.DAL
 {
     public interface ITrailDataService
     {
-        IEnumerable<Trail> Read();
-        void Write(IEnumerable<Trail> trails);
+        List<Trail> Read();
+        void Write(List<Trail> trails);
     }
 }

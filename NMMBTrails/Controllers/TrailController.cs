@@ -116,75 +116,112 @@ namespace NMMBTrails.Controllers
         // GET: Trail/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            TrailRepository trailRepository = new TrailRepository();
+            Trail trail = new Trail();
+
+            using (trailRepository)
+            {
+                trail = trailRepository.SelectOne(id);
+            }
+
+            return View(trail);
         }
 
-        // GET: Trail/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: Trail/Create
+        
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Trail trail)
         {
             try
             {
-                // TODO: Add insert logic here
+                TrailRepository trailRepository = new TrailRepository();
+
+                using (trailRepository)
+                {
+                    trailRepository.Insert(trail);
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
+                // TODO Add view for error message
                 return View();
             }
         }
 
-        // GET: Trail/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            TrailRepository trailRepository = new TrailRepository();
+            Trail trail = new Trail();
+
+            using (trailRepository)
+            {
+                trail = trailRepository.SelectOne(id);
+            }
+
+            return View(trail);
         }
 
-        // POST: Trail/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Trail trail)
         {
             try
             {
-                // TODO: Add update logic here
+                TrailRepository trailRepository = new TrailRepository();
+
+                using (trailRepository)
+                {
+                    trailRepository.Update(trail);
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
+                // TODO Add view for error message
                 return View();
             }
         }
 
-        // GET: Trail/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+            TrailRepository trailRepository = new TrailRepository();
+            Trail trail = new Trail();
+
+            using (trailRepository)
+            {
+                trail = trailRepository.SelectOne(id);
+            }
+
+            return View(trail);
         }
 
-        // POST: Trail/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Trail trail)
         {
             try
             {
-                // TODO: Add delete logic here
+                TrailRepository trailRepository = new TrailRepository();
+
+                using (trailRepository)
+                {
+                    trailRepository.Delete(id);
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
+                // TODO Add view for error message
                 return View();
             }
         }
-
-
     }
 }

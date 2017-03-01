@@ -17,6 +17,7 @@ namespace NMMBTrails
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Application["xmlPath"] = HttpContext.Current.Server.MapPath("~/App_Data/Trails.xml");
         }
 
         protected void Session_Start()

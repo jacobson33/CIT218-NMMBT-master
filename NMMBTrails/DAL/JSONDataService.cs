@@ -10,15 +10,14 @@ namespace NMMBTrails.DAL
 {
     public class JSONDataService : ITrailDataService
     {
-        public IEnumerable<Trail> Read()
-        {
+        public List<Trail> Read()      {
 
 
 
             return new List<Trail>();
         }
 
-        public void Write(IEnumerable<Trail> trails)
+        public void Write(List<Trail> trails)
         {
             try
             {
