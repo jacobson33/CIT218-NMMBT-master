@@ -252,6 +252,7 @@
     <Content Include="App_Data\Trails.xml" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\banner-med.jpg" />
     <Content Include="Content\Images\banner.jpg" />
     <Content Include="Content\lavish-bootstrap.css" />
     <Content Include="favicon.ico" />

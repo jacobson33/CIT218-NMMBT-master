@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.URL)
+            <a href="@Html.DisplayNameFor(model => model.URL)">@Html.DisplayNameFor(model => model.URL)</a>
         </dt>
 
         <dd>
@@ -66,8 +66,6 @@
         var lat = @Html.Raw(Json.Encode(Model.Latitude));
         var lon = @Html.Raw(Json.Encode(Model.Longitude));
         var name = '@Html.Raw(Json.Encode(Model.Name))';
-
-        alert(lat + ' ::: ' + lon);
 
         var mapOptions = {
             center: new google.maps.LatLng(lat, lon),
