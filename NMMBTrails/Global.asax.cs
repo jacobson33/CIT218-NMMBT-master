@@ -24,6 +24,7 @@ namespace NMMBTrails
         {
             XMLDataService xml = new XMLDataService();
             Session["Trails"] = xml.Read();
+            Session["Permission"] = "User";
         }
     }
 }

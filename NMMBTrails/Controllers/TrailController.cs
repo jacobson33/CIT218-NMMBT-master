@@ -11,6 +11,16 @@ namespace NMMBTrails.Controllers
     public class TrailController : Controller
     {
         [HttpGet]
+        public ActionResult ChangePermission(string permission)
+        {
+            if (permission == "Admin")
+                Session["Permission"] = "Admin";
+            else
+                Session["Permission"] = "User";
+
+            return RedirectToAction("Index");
+        }
+        [HttpGet]
         public ActionResult Index(string sortOrder)
         {
             TrailRepository trailRepository = new TrailRepository();
@@ -130,12 +140,18 @@ namespace NMMBTrails.Controllers
         [HttpGet]
         public ActionResult Create()
         {
+            if (Session["Permission"] != "Admin")
+                return RedirectToAction("Index");
+
             return View();
         }
         
         [HttpPost]
         public ActionResult Create(Trail trail)
         {
+            if (Session["Permission"] != "Admin")
+                return RedirectToAction("Index");
+
             try
             {
                 TrailRepository trailRepository = new TrailRepository();
@@ -157,6 +173,9 @@ namespace NMMBTrails.Controllers
         [HttpGet]
         public ActionResult Edit(int id)
         {
+            if (Session["Permission"] != "Admin")
+                return RedirectToAction("Index");
+
             TrailRepository trailRepository = new TrailRepository();
             Trail trail = new Trail();
 
@@ -171,6 +190,9 @@ namespace NMMBTrails.Controllers
         [HttpPost]
         public ActionResult Edit(Trail trail)
         {
+            if (Session["Permission"] != "Admin")
+                return RedirectToAction("Index");
+
             try
             {
                 TrailRepository trailRepository = new TrailRepository();
@@ -192,6 +214,9 @@ namespace NMMBTrails.Controllers
         [HttpGet]
         public ActionResult Delete(int id)
         {
+            if (Session["Permission"] != "Admin")
+                return RedirectToAction("Index");
+
             TrailRepository trailRepository = new TrailRepository();
             Trail trail = new Trail();
 
@@ -206,6 +231,9 @@ namespace NMMBTrails.Controllers
         [HttpPost]
         public ActionResult Delete(int id, Trail trail)
         {
+            if (Session["Permission"] != "Admin")
+                return RedirectToAction("Index");
+
             try
             {
                 TrailRepository trailRepository = new TrailRepository();

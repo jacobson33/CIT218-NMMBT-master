@@ -5,6 +5,11 @@
 }
 
 <h2>View</h2>
+
+<p style="text-align:right">
+    @Html.ActionLink("View as Administrator", "ChangePermission", new { permission = "Admin" }) |
+    @Html.ActionLink("View as User", "ChangePermission", new { permission = "User" })
+</p>
 <h4>@ViewBag.SearchCriteria</h4>
 <h4>@ViewBag.CountyFilter</h4>
 
@@ -26,9 +31,10 @@
     </div>
 }
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@if ((string)HttpContext.Current.Session["Permission"] == "Admin")
+{
+    <p>@Html.ActionLink("Create New", "Create")</p>
+}
 <table class="table">
     <tr>
         <th>
@@ -62,10 +68,17 @@
         <td>
             <a href="@Html.DisplayFor(modelItem => item.URL)" target="_blank">Website</a>
         </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) | 
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
-        </td>
+        @if ((string)HttpContext.Current.Session["Permission"] == "Admin")
+        {
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        }
+        else
+        {
+            <td></td>
+        }        
     </tr>
 }
 
