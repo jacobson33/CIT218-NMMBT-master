@@ -24,19 +24,41 @@ namespace NMMBTrails.Controllers
                 trails = trailRepository.SelectAll() as IList<Trail>;
             }
 
+            //sorting setup
+            ViewBag.NameSort = sortOrder == "Name" ? "Name_desc" : "Name";
+            ViewBag.CountySort = sortOrder == "County" ? "County_desc" : "County";
+
             //sorting
             switch (sortOrder)
             {
                 case "Name":
                     trails = trails.OrderBy(t => t.Name);
+                    ViewBag.NameSortArrow = "glyphicon-chevron-up";
+                    ViewBag.CountySortArrow = null;
+                    break;
+
+                case "Name_desc":
+                    trails = trails.OrderByDescending(t => t.Name);
+                    ViewBag.NameSortArrow = "glyphicon-chevron-down";
+                    ViewBag.CountySortArrow = null;
                     break;
 
                 case "County":
                     trails = trails.OrderBy(t => t.County);
+                    ViewBag.CountySortArrow = "glyphicon-chevron-up";
+                    ViewBag.NameSortArrow = null;
+                    break;
+
+                case "County_desc":
+                    trails = trails.OrderByDescending(t => t.County);
+                    ViewBag.CountySortArrow = "glyphicon-chevron-down";
+                    ViewBag.NameSortArrow = null;
                     break;
 
                 default:
                     trails = trails.OrderBy(t => t.Id);
+                    ViewBag.NameSortArrow = null;
+                    ViewBag.CountySortArrow = null;
                     break;
             }
 
@@ -58,11 +80,17 @@ namespace NMMBTrails.Controllers
             }
 
             //filter
-            if (searchCriteria != null)
+            if (!String.IsNullOrEmpty(searchCriteria))
+            {
                 trails = trails.Where(t => t.Name.ToUpper().Contains(searchCriteria.ToUpper()));
+                ViewBag.SearchCriteria = searchCriteria;
+            }
 
-            if (countyFilter != "" || countyFilter != null)
+            if (!String.IsNullOrEmpty(countyFilter))
+            {
                 trails = trails.Where(t => t.County == countyFilter);
+                ViewBag.CountyFilter = countyFilter;
+            }
 
             return View(trails);
         }
@@ -88,71 +116,110 @@ namespace NMMBTrails.Controllers
         // GET: Trail/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            TrailRepository trailRepository = new TrailRepository();
+            Trail trail = new Trail();
+
+            using (trailRepository)
+            {
+                trail = trailRepository.SelectOne(id);
+            }
+
+            return View(trail);
         }
 
-        // GET: Trail/Create
+        [HttpGet]
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: Trail/Create
+        
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Trail trail)
         {
             try
             {
-                // TODO: Add insert logic here
+                TrailRepository trailRepository = new TrailRepository();
+
+                using (trailRepository)
+                {
+                    trailRepository.Insert(trail);
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
+                // TODO Add view for error message
                 return View();
             }
         }
 
-        // GET: Trail/Edit/5
+        [HttpGet]
         public ActionResult Edit(int id)
         {
-            return View();
+            TrailRepository trailRepository = new TrailRepository();
+            Trail trail = new Trail();
+
+            using (trailRepository)
+            {
+                trail = trailRepository.SelectOne(id);
+            }
+
+            return View(trail);
         }
 
-        // POST: Trail/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(Trail trail)
         {
             try
             {
-                // TODO: Add update logic here
+                TrailRepository trailRepository = new TrailRepository();
+
+                using (trailRepository)
+                {
+                    trailRepository.Update(trail);
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
+                // TODO Add view for error message
                 return View();
             }
         }
 
-        // GET: Trail/Delete/5
+        [HttpGet]
         public ActionResult Delete(int id)
         {
-            return View();
+            TrailRepository trailRepository = new TrailRepository();
+            Trail trail = new Trail();
+
+            using (trailRepository)
+            {
+                trail = trailRepository.SelectOne(id);
+            }
+
+            return View(trail);
         }
 
-        // POST: Trail/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, Trail trail)
         {
             try
             {
-                // TODO: Add delete logic here
+                TrailRepository trailRepository = new TrailRepository();
+
+                using (trailRepository)
+                {
+                    trailRepository.Delete(id);
+                }
 
                 return RedirectToAction("Index");
             }
             catch
             {
+                // TODO Add view for error message
                 return View();
             }
         }

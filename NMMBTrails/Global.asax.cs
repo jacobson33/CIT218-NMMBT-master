@@ -17,11 +17,13 @@ namespace NMMBTrails
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            Application["dataFilePath"] = new DataConfig().xmlPath;
         }
 
         protected void Session_Start()
         {
-            Session["Trails"] = InitializeSeedData.GetAllTrails();
+            XMLDataService xml = new XMLDataService();
+            Session["Trails"] = xml.Read();
         }
     }
 }

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Trails xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Trail>
+    <Id>3</Id>
+    <Name>Little Trail</Name>
+    <Longitude>45</Longitude>
+    <Latitude>85</Latitude>
+    <County>Otsego</County>
+    <URL>#</URL>
+  </Trail>
+  <Trail>
+    <Id>4</Id>
+    <Name>Wooded Trail</Name>
+    <Longitude>45</Longitude>
+    <Latitude>85</Latitude>
+    <County>Grand Traverse</County>
+    <URL>#</URL>
+  </Trail>
+  <Trail>
+    <Id>5</Id>
+    <Name>Easy Riding</Name>
+    <Longitude>45</Longitude>
+    <Latitude>85</Latitude>
+    <County>Kalkaska</County>
+    <URL>#</URL>
+  </Trail>
+  <Trail>
+    <Id>6</Id>
+    <Name>Trail 17</Name>
+    <Longitude>45</Longitude>
+    <Latitude>85</Latitude>
+    <County>Leelanau</County>
+    <URL>#</URL>
+  </Trail>
+  <Trail>
+    <Id>7</Id>
+    <Name>Trail 2</Name>
+    <Longitude>45</Longitude>
+    <Latitude>85</Latitude>
+    <County>Grand Traverse</County>
+    <URL>#</URL>
+  </Trail>
+  <Trail>
+    <Id>8</Id>
+    <Name>Mountain Top</Name>
+    <Longitude>45</Longitude>
+    <Latitude>85</Latitude>
+    <County>Mackinaw</County>
+    <URL>#</URL>
+  </Trail>
+  <Trail>
+    <Id>1</Id>
+    <Name>VASA Single Track</Name>
+    <Longitude>45</Longitude>
+    <Latitude>-85</Latitude>
+    <County>Grand Traverse</County>
+    <URL>https://www.singletracks.com/bike-trails/vasa-single-track.html</URL>
+  </Trail>
+  <Trail>
+    <Id>2</Id>
+    <Name>Big Trail</Name>
+    <Longitude>45</Longitude>
+    <Latitude>85</Latitude>
+    <County>Leelanau</County>
+    <URL>#</URL>
+  </Trail>
+</Trails>
