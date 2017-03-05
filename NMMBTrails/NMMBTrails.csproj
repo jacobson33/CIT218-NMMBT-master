@@ -251,6 +251,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\banner.jpg" />
     <Content Include="Content\lavish-bootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -309,10 +310,10 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Trail\Index.cshtml" />
-    <Content Include="Views\Trail\Create.cshtml" />
-    <Content Include="Views\Trail\Delete.cshtml" />
     <Content Include="Views\Trail\Edit.cshtml" />
     <Content Include="Views\Trail\Details.cshtml" />
+    <Content Include="Views\Trail\Delete.cshtml" />
+    <Content Include="Views\Trail\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

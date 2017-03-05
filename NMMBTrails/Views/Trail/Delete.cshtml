@@ -1,4 +1,4 @@
-﻿@model CA_InfoWebsite.Models.Brewery
+﻿@model NMMBTrails.Models.Trail
 
 @{
     ViewBag.Title = "Delete";
@@ -8,7 +8,7 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>Brewery</h4>
+    <h4>Trail</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -20,43 +20,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Address)
+            @Html.DisplayNameFor(model => model.Longitude)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Address)
+            @Html.DisplayFor(model => model.Longitude)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.City)
+            @Html.DisplayNameFor(model => model.Latitude)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.City)
+            @Html.DisplayFor(model => model.Latitude)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.State)
+            @Html.DisplayNameFor(model => model.County)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.State)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Zip)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Zip)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Phone)
+            @Html.DisplayFor(model => model.County)
         </dd>
 
         <dt>
@@ -73,7 +57,7 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn" /> |
+            <input type="submit" value="Delete" class="btn btn-default" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

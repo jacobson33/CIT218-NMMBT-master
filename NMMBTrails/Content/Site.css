@@ -22,3 +22,22 @@ select,
 textarea {
     max-width: 280px;
 }
+
+.jumbotron {
+    background-image: none;
+}
+
+.jumbotron h1 {
+    color: black;
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron {
+        background-image: url("Images/banner-med.jpg");
+    }
+
+        .jumbotron h1 {
+            color: black;
+            text-align: right;
+        }
+}

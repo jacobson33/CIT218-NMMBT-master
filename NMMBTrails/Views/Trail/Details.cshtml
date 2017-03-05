@@ -52,27 +52,23 @@
     </dl>
 </div>
 
-<div class="col-md-6" id="map_canvas" style="width: 640px; height: 480px;"></div>
+<div class="col-md-6" id="map_canvas" style="height:400px"></div>
 
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
 
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?key=AIzaSyCuLNIGdQlLxGfis0U_TxXgjdaluJa8dxA&sensor=false"></script>
 <script type="text/javascript">
 
-    var lat = @model.Latitude;
-    var lon = @model.Longitude;
-    //var name = @model.Name;
-
-    //console.log(name);
-
-    $(document).ready(function () {
-        initialize();
-    });
-
     function initialize() {
+        var lat = @Html.Raw(Json.Encode(Model.Latitude));
+        var lon = @Html.Raw(Json.Encode(Model.Longitude));
+        var name = '@Html.Raw(Json.Encode(Model.Name))';
+
+        alert(lat + ' ::: ' + lon);
+
         var mapOptions = {
             center: new google.maps.LatLng(lat, lon),
             zoom: 10,
@@ -83,7 +79,12 @@
         var marker = new google.maps.Marker({
             position: latlng,
             map: map,
-            title: ''
+            title: name
         });
     }
+
+    window.onload = function(){
+        initialize();
+    }
+
 </script>
